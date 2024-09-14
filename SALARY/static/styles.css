@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    background-color: #111;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden; /* Ensure contents don't overflow */
+}
+
+.left-side {
+    background-color: #000; /* Pure black background */
+    padding: 20px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 40%; /* Adjusted width to reduce size */
+    position: relative; /* Needed for absolute positioning of img */
+    overflow: hidden; /* Hide overflow to contain image */
+}
+
+.left-side img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block; /* Ensures image behaves like a block element */
+    position: absolute; /* Position image absolutely */
+    animation: slide 5s infinite alternate; /* Animation details */
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50px); /* Move image to the left */
+    }
+}
+
+.right-side {
+    padding: 20px; /* Adjusted padding to decrease size */
+    background-color: #222;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 60%; /* Adjusted width to take remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    color: #3088cb; /* Dark blue color for headings */
+    margin-bottom: 20px;
+}
+
+form {
+    width: 100%; /* Ensure form takes full width of right-side */
+    max-width: 300px; /* Limit form width for better readability */
+}
+
+label {
+    color: #3088cb; /* Dark blue color for labels */
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+}
+
+input[type="submit"] {
+    background-color: #3088cb; /* Dark blue background for buttons */
+    color: #000;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #3088cb; /* Darker blue on hover for buttons */
+}
+
+ul {
+    color: red; /* Red color for lists */
+}

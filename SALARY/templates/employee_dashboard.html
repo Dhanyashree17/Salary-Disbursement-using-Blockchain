@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Dashboard</title>
+</head>
+<body>
+    <h2>Employee Dashboard</h2>
+    <h3>Transaction History</h3>
+    <ul>
+        {% for tx in transactions %}
+            <li>{{ tx.amount }} - {{ tx.transaction_hash }} - {{ tx.timestamp }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

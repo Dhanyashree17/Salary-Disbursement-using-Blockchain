@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='adminstyle.css') }}">
+</head>
+<body>
+    <h2>Employee List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Wallet Address</th>
+                <th>Salary Amount (ETH)</th>
+                <th>Email</th>
+                <th>Employment Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.wallet_address }}</td>
+                <td>{{ employee.salary_amount }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.employment_status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form method="post" action="{{ url_for('pay_salaries') }}">
+        <button type="submit">Pay Salaries</button>
+    </form>
+    <button onclick="location.href='{{ url_for('admin_dashboard') }}'">Back to Dashboard</button>
+</body>
+</html>

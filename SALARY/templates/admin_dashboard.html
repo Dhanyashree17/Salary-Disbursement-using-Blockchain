@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='adminstyle.css') }}">
+</head>
+<body>
+    <h2>Admin Dashboard</h2>
+    <div>
+        <button onclick="location.href='{{ url_for('add_employee') }}'">Add Employee</button>
+        <button onclick="href='{{ url_for('employee_list') }}'">Send Salary</button>
+    </div>
+</body>
+</html>

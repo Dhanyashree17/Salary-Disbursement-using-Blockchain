@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='adminstyle.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center my-3">
+            <h1><b><i>Admin Dashboard</i></b></h1>
+            <div class="d-flex align-items-center">
+               
+                <a href="{{ url_for('logout') }}" class="btn btn-danger ml-2">Logout</a>
+            </div>
+        </div>
+
+        <!-- Flash message block -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-info" role="alert">
+                    {% for message in messages %}
+                        {{ message }}<br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <form action="{{ url_for('add_employee') }}" method="POST">
+            <h3>Add Employee</h3>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="wallet_address">Wallet Address</label>
+                <input type="text" name="wallet_address" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="salary_amount">Salary Amount</label>
+                <input type="number" name="salary_amount" step="0.01" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="employment_status">Employment Status</label>
+                <input type="text" name="employment_status" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Employee</button>
+        </form><br>
+        <br>
+
+        <h3>Employees</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Wallet Address</th>
+                    <th>Salary Amount</th>
+                    <th>Email</th>
+                    <th>Employment Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.wallet_address }}</td>
+                    <td>{{ employee.salary_amount }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.employment_status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <form action="{{ url_for('initiate_salary_disbursement') }}" method="POST">
+            <button type="submit" class="btn btn-success">Send Salaries</button>
+        </form>
+    </div>
+</body>
+</html>
